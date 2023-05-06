@@ -27,7 +27,7 @@ go
 create table Place(
 	PlaceID int identity(1,1) primary key,
 	ZipCode int not null,
-	City nvarchar(50) not null,
+	Street nvarchar(200),
 );
 go
 
