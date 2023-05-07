@@ -58,12 +58,18 @@ create table [User](
 	BirthDate datetime not null,
 );
 go
+create table Action(
+	ActionID int identity(1,1) primary key,
+	[Status] varchar(20) not null,
+);
+go
 
 create table Item(
 	ItemID int identity(1,1) primary key,
 	EmployeeID int foreign key references Employee(EmployeeID),
 	OrganizationID int foreign key references Organization(OrganizationID),
 	UserID int foreign key references [User](UserID),
+	ActionID int foreign key references [Action](ActionID),
 	[Name] nvarchar(50),
 	Shape nvarchar(50),
 	Dimensions varchar(20),
@@ -72,11 +78,3 @@ create table Item(
 	FoundDate datetime not null,
 );
 go
-
-create table Action(
-	ActionID int identity(1,1) primary key,
-	ItemID int foreign key references Item(ItemID),
-	[Status] varchar(20) not null,
-);
-go
-
