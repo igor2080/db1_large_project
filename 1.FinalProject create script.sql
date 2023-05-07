@@ -64,6 +64,7 @@ create table Item(
 	EmployeeID int foreign key references Employee(EmployeeID),
 	OrganizationID int foreign key references Organization(OrganizationID),
 	UserID int foreign key references [User](UserID),
+	[Name] nvarchar(50),
 	Shape nvarchar(50),
 	Dimensions varchar(20),
 	FoundLocation nvarchar(200),
