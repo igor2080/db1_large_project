@@ -13,14 +13,7 @@ go
 
 create table Organization(
 	OrganizationID int identity(1,1) primary key,
-	ContactInfoID int foreign key references ContactInfo(ContactInfoID),	
-);
-go
-
-create table ServiceType(
-	ServiceID int identity(1,1) primary key,
-	OrganizationID int foreign key references Organization(OrganizationID),
-	[Name] nvarchar(50) not null,
+	ContactInfoID int foreign key references ContactInfo(ContactInfoID),
 );
 go
 
@@ -28,13 +21,14 @@ create table Place(
 	PlaceID int identity(1,1) primary key,
 	ZipCode int not null,
 	Street nvarchar(200),
+	OrganizationID int foreign key references Organization(OrganizationID),
 );
 go
 
-create table LocatedIn(
+create table ServiceType(
+	ServiceID int identity(1,1) primary key,
 	OrganizationID int foreign key references Organization(OrganizationID),
-	PlaceID int foreign key references Place(PlaceID),
-	constraint location_place primary key(OrganizationID, PlaceID),
+	[Name] nvarchar(50) not null,
 );
 go
 
